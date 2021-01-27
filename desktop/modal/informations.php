@@ -62,8 +62,8 @@
 	echo '</td></tr>';
 
 	$value = json_decode($eqLogic->getCmd('info','ISnap')->getCache()['value']);
-	echo '<tr><td>Quantité pellets consommés (unité ?)</td><td>';
 	if($value) { echo $value->PELLET_QTUSED; }
+	echo '<tr><td>Quantité pellets consommés (kg)</td><td>';
 	echo '</td></tr>';
 
 	// NETWORK
