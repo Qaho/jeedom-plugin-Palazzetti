@@ -119,14 +119,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
                                        data-l2key="addressip" type="text" placeholder="{{Saisir l'adresse IP}}">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"></label>
-                            <div class="col-sm-9">
-                                <label class="checkbox-inline"><input id="deamoncheck" type="checkbox"
-                                                                      class="eqLogicAttr" data-l1key="configuration"
-                                                                      data-l2key="ModeHIGH"/>{{Poêle mode HIGH}}</label>
-                            </div>
-                        </div>
                     </fieldset>
                 </form>
             </div>

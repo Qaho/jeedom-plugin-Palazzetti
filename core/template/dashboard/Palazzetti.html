@@ -1,63 +1,48 @@
 <div id="plugin_container" class="eqLogic-widget eqLogic allowResize" style="width:#width#;height:#height#;border:#border#;border-radius:#border-radius#;background-color: #background-color#;color: #color#; #style#" data-category="" data-eqLogic_id="#id#" data-version="#version#" >
-   <center class="widget-name"><strong><a href="#eqLink#" style="font-size : 1.1em;#hideEqLogicName#">#name_display#</strong></a>
-	<i class='fa fa-refresh pull-right cursor refresh' style="margin-top: 3px;margin-right: 6px;"></i>
-	<i class='fa fa-info-circle pull-right cursor info' style="margin-top: 3px;margin-right: 6px;"></i>
-	<i class='fa fa-calendar pull-right cursor calendar' style="margin-top: 3px;margin-right: 6px;"></i>
-	<div class="row">
-		<center style="padding:15px 10px 0px 10px">
-		<div class="col-sm-12">
-			<div class="row">
-				<div class="col-sm-12" style="text-align:left;">
-					<div type="button" class="btn pull-right" style="padding-top:4p;cursor: default;">#status#</div>
-					<div type="button" class="btn btn-xs pull-right" style="margin-top:8px;" id="onoff_action"></div>
-					<div type="button" class="btn pull-left" style="padding-top:6px;font-weight:normal;cursor: default;">Etat : </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12" style="text-align:left;">
-					<div type="button" class="btn pull-right" style="padding-top:4p;cursor: default;">#temperature# °C</div>
-					<div type="button" class="btn pull-left" style="padding-top:6px;font-weight:normal;cursor: default;">Température d'ambiance : </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12" style="text-align:left;">
-					<div class="btn-group pull-right" role="group">
-						<div type="button" class="btn fa fa-plus pull-right cursor consigne-plus"></div>
-						<div type="button" class="btn fa fa-minus pull-right cursor consigne-moins"></div>
-						<div type="button" class="btn pull-right" style="padding-top:4p;cursor: default;">#consigne# °C</div>
-					</div>	
-					<div type="button" class="btn pull-left" style="padding-top:6px;font-weight:normal;cursor: default;">Consigne : </div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12" style="text-align:left;">
-					<div class="btn-group pull-right" role="group">
-						<div type="button" class="btn fa fa-plus pull-right cursor fan-plus"></div>
-						<div type="button" class="btn fa fa-minus pull-right cursor fan-moins"></div>
-						<div type="button" class="btn pull-right" style="padding-top:4px;cursor: default;">#fan#</div>
+	<center class="widget-name"><strong><a href="#eqLink#" style="font-size : 1.1em;#hideEqLogicName#">#name_display#</a>
+		<i class='fas fa-sync pull-right cursor refresh' style="margin-top: 3px;margin-right: 6px;"></i></strong>
+	</center>
+	<div class="content-xs">
+		<div class="plugin-all">
+			<div class="container">
+				<div type="button" class="btn btn-xs" id="onoff_action"></div>
+				<div class="status">#status#</div>
+				<div class="temp_ambiante"><span style="font-size:18px">#temperature#°C</span> <br/> T° ambiante</div>
+				<div class="temp_consigne"><span style="font-size:18px">#consigne#°C</span> <br/> T° de consigne</div>
+				<div class="group_container">
+					<div class="consigne_title"><i class="fas fa-thermometer-half"></i> consigne</div>
+					<div class="consigne_all">
+						<span type="button" class="cursor consigne-moins">-</span>
+						<span class="consigne">#consigne#</span>
+						<span type="button" class="cursor consigne-plus">+</span>
 					</div>
-					<div type="button" class="btn pull-left" style="padding-top:6px;font-weight:normal;cursor: default;">Ventilation : </div>
-				</div>				
-			</div>
-			<div class="row">
-				<div class="col-sm-12" style="text-align:left;">
-					<div class="btn-group pull-right" role="group">
-						<div type="button" class="btn fa fa-plus pull-right cursor power-plus"></div>
-						<div type="button" class="btn fa fa-minus pull-right cursor power-moins"></div>
-						<div type="button" class="btn pull-right" style="padding-top:4px;cursor: default;">#power#</div>
+				</div>
+				<div class="group_container">
+					<div class="consigne_title"><i class="fas fa-fire-alt"></i> puissance</div>
+					<div class="consigne_all">
+						<span type="button" class="cursor power-moins">-</span>
+						<span type="button" class="consigne">#power#</span>
+						<span type="button" class="cursor power-plus">+</span>
 					</div>
-					<div type="button" class="btn pull-left" style="padding-top:6px;font-weight:normal;cursor: default;">Intensité du feu : </div>
-				</div>	
+				</div>
+				<div class="group_container">
+					<div class="consigne_title"><i class="fas fa-fan"></i> ventilation</div>
+					<div class="consigne_all">
+						<span type="button" class="cursor fan-moins">-</span>
+						<span class="consigne">#fan#</span>
+						<span type="button" class="cursor fan-plus">+</span>
+					</div>
+				</div>
+				<img class="calendar" style="cursor: pointer;" width="100px" src="plugins/Palazzetti/plugin_info/Images/calendar.png">
 			</div>
 		</div>
-		</center>
 	</div>
 	<script>
-		var status 			= '#status#'; 
+		var status 		= '#status#'; 
 		var power 			= #power#;
 		var fan 			= '#fan#';
 		var consigne 		= #consigne#;
-
+		
 		/* on/off */
 		$(function() {
 			if(status == 'OFF' || status == 'OFF TIMER') { 
@@ -66,14 +51,17 @@
 				$('#onoff_action').addClass('btn-danger').removeClass('btn-success').text('STOP'); 
 			}
 		});
-
+		
 		$('#onoff_action').on('click', function(){
 			if(status == 'OFF' || status == 'OFF TIMER') {
 				jeedom.cmd.execute({id: #on_id#});
+				status = "ON";
 			} else {
 				jeedom.cmd.execute({id: #off_id#});
+				status = "OFF";
 			}
 		});
+		
 		/* consigne */
 		$('.eqLogic[data-eqLogic_id=#id#] .consigne-plus').on('click', function () {
 			consigne++;
@@ -83,6 +71,7 @@
 			consigne--;
 			jeedom.cmd.execute({id: #consigne_id#, value: consigne});
 		});	
+		
 		/* ventilation */
 		$('.eqLogic[data-eqLogic_id=#id#] .fan-plus').on('click', function () {
 			if(fan == 'AUTO') { 
@@ -91,6 +80,7 @@
 			fan++; 
 			jeedom.cmd.execute({id: #fan_id#, value: fan});
 		});	
+		
 		$('.eqLogic[data-eqLogic_id=#id#] .fan-moins').on('click', function () {
 			if(fan == 'AUTO') { 
 				fan = 6; 			
@@ -131,17 +121,108 @@
 		/* planning */
 		$('.eqLogic[data-eqLogic_id=#id#] .calendar').on('click', function () {
 			$('#md_modal').dialog({title: "Planning horaires"});
-			$('#md_modal').load('index.php?v=d&plugin=Palazzetti&modal=planning&id=#id#').dialog('open');
+				$('#md_modal').load('index.php?v=d&plugin=Palazzetti&modal=planning&id=#id#').dialog('open');
 		});	
 		/* info */
 		$('.eqLogic[data-eqLogic_id=#id#] .info').on('click', function () {
-			$('#md_modal').dialog({title: "Informations"});
-			$('#md_modal').load('index.php?v=d&plugin=Palazzetti&modal=informations&id=#id#').dialog('open');
+				$('#md_modal').dialog({title: "Informations"});
+				$('#md_modal').load('index.php?v=d&plugin=Palazzetti&modal=informations&id=#id#').dialog('open');
 		});	
 		/* refresh */
 		$('.eqLogic[data-eqLogic_id=#id#] .refresh').on('click', function () {
 			jeedom.cmd.execute({id: #refresh_id#});
 		});	
-
+		
 	</script>
+	<style>
+		.plugin-all
+		{
+			display:flex;
+			text-align:center;
+			text-transform:uppercase;
+			font-family:roboto;
+		}
+		.container {
+			width:90%
+			margin:auto;
+		}
+		.status
+		{
+			text-align:center
+		}
+		.temp_ambiante
+		{
+			float:left;
+			font-size:12px;
+		}
+		.temp_consigne
+		{
+			float:right;
+			font-size:12px;
+			color: #f65858;
+		}
+		.group_container
+		{
+			padding-top:20px;
+			clear:both;
+		}
+		.consigne_all
+		{
+			display:flex;
+			margin:10px;
+		}
+		.consigne
+		{
+			font-family: 'Roboto';
+			text-align:center;
+			margin:auto;
+			font-size: 28px;
+			font-weight:bold;
+		}
+		.consigne-moins
+		{
+			margin:auto;
+			font-size:24px;
+			font-weight:bold;
+		}
+		.consigne-plus
+		{
+			margin:auto;
+			font-size:24px;
+			font-weight:bold;
+		}
+		.consigne_title
+		{
+			font-family:roboto;
+			text-align:center;
+			font-size:18px;
+			text-transform:uppercase;
+			font-weight:bold;
+			clear:both;
+		}
+		.fan-moins
+		{
+			margin:auto;
+			font-size:24px;
+			font-weight:bold;
+		}
+		.fan-plus
+		{
+			margin:auto;
+			font-size:24px;
+			font-weight:bold;
+		}
+		.power-moins
+		{
+			margin:auto;
+			font-size:24px;
+			font-weight:bold;
+		}
+		.power-plus
+		{
+			margin:auto;
+			font-size:24px;
+			font-weight:bold;
+		}
+	</style>
 </div>
